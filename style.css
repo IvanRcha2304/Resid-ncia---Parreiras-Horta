@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    padding: 0;
+    margin: 0; 
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home {
+    display: flex;
+    background-color: rgb(77, 76, 76);
+    height: 100vh;
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.lampada-apagada{
+    height: 100px;
+    margin-top: 130px;
+}
