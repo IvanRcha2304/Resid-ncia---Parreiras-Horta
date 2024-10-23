@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gestor - Solicitações de Não Conformidade</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="Imagens/Central de Chamadas.png" id="logo_central_de_chamadas">
+                <div class="configuraçoes">
+                    <div class="texto_configuraçoes">
+                        <img src="Imagens/person_icon.png" id="person_icon">
+                        <p id="nome_usuario">Nome do Controlador</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="conteudo">
+        <div id="menu_lateral">
+            <div id="Frame de Links">
+                <img src="Imagens/fsph_logo (1) 3.png" id="logo">
+                <div id="links">
+                    <div id="texto_link">
+                        <img src="Imagens/home.png" id="icone_lateral">
+                        <p>Pagina Inical</p>
+                    </div>
+                    <div id="texto_link">
+                        <img src="Imagens/lista.png" id="icone_solicitaçoes">
+                        <p>Solicitações</p>
+                    </div>
+                    <div id="texto_link">
+                        <img src="Imagens/lista.png" id="icone_lateral">
+                        <p>Chamadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="conteudo_prinicipal">
+            <div class="initial">
+                    <div class="breadcrumb">
+                        <a href="#">Início</a> > <span>Delegar não conformidades</span>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar Chamados">
+                        <button><img src="Imagens/loupe.png" alt="Buscar"></button>
+                    </div>
+                </div>
+                    <div class="advanced-search">
+                    <h2>Busca Avançada</h2>
+                    <div class="form-group">
+                        <label>Gestor</label>
+                        <input type="text" placeholder="Gestor">
+                    </div>
+                    <div class="form-group">
+                        <label>Situação</label>
+                        <input type="text" placeholder="Situação">
+                    </div>
+                    <div class="form-group">
+                        <label>Data</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select>
+                            <option>Todos</option>
+                            <option>Tipo 1</option>
+                            <option>Tipo 2</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn-search">Buscar</button>
+                        <button class="btn-clear">Limpar</button>
+                    </div>
+                </div>
+                <table class="chamados-table">
+                    <thead>
+                        <tr>
+                            <th>Nome do usuário</th>
+                            <th>Código</th>
+                            <th>Situação</th>
+                            <th>Gestor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Embrêil Cardoso</td>
+                            <td>Não informado</td>
+                            <td>Alto</td>
+                            <td>Nelton J.</td>
+                            <td><button>Delegar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Kaique Nascimento</td>
+                            <td>Não informado</td>
+                            <td>Em andamento</td>
+                            <td>Eronides R.</td>
+                            <td><button>Delegar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Joaquim Oliveira</td>
+                            <td>Não informado</td>
+                            <td>Alto</td>
+                            <td>Newton C.</td>
+                            <td><button>Delegar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+                <div class="pagination">
+                    <button>Anterior</button>
+                    <span>1 de 4</span>
+                    <button>Próximo</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

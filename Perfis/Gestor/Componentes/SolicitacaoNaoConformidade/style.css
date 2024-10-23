@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0%;
+}
+
+header{
+    background: #164590;
+    width: 100%;
+    height: 122px;  
+    position: static;
+    
+}
+#menu_lateral{
+    background-color: #164590;
+    width: 425px;
+    left: 100%;
+    height: 627px;
+    position: static;
+}
+#menu_lateral #logo{
+    position: absolute;
+    width: 175px;
+    height: 188px;
+    top: 55px;
+    left: 60px;
+    right: 88px;
+}
+#links{
+    position: absolute;
+    top: 345px;
+    left: 75px;
+
+}
+#links p{
+    color: #FFF;
+    font-family:"Roboto";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#links #texto_link{
+    display: flex;
+    gap: 9.3px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#logo_central_de_chamadas{
+    width: 324px;
+    height: 64px;
+    position: relative;
+    top: 25px;
+    left: 20px;
+}
+.configuraçoes{
+    position: relative;
+    top: -6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.configuraçoes img{
+    width: 55px;
+    height: 51px;
+}
+#nome_usuario{
+    margin-top: 16px;
+    margin-right: 50px;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.texto_configuraçoes{
+    display: flex;
+    gap: 9.3px;  
+}
+.conteudo{
+    position: relative;
+    top: 0px;
+    width: 100%;
+    left: auto;
+    display: flex;
+}
+#conteudo_prinicipal{
+    width: 100%;
+    left: 100%;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+ .initial{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.search-bar img{
+    width: 20px;
+}
+.breadcrumb {
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.search-bar {  
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    margin-left: 5px;
+    background-color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.advanced-search {
+    margin-bottom: 20px;
+}
+
+.advanced-search h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 24%;
+    padding-right: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-group {
+    margin-top: 10px;
+}
+
+.btn-search {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-clear {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chamados-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.chamados-table th, 
+.chamados-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.chamados-table th {
+    background-color: #f8f9fa;
+}
+
+.chamados-table button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
