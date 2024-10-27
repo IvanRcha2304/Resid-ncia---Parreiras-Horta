@@ -29,6 +29,7 @@ aside div h1, aside div h4, aside div h3{
 }
 #centralizador-lateral img{
     width: 130px;
+    margin-top: 20px;
 }
 
 @media screen and (max-width: 500px){
@@ -53,12 +54,14 @@ aside div h1, aside div h4, aside div h3{
 
 header {
     background-color: var(--cor-principal);
-    width: 100vw;
+    width: calc(100% - 35px);
     height: 100%;
     display: flex;
     justify-content: space-between;    
     align-items: center;
     color: var(--cor-secundaria);
+    padding-left: 35px;
+    padding-top: 20px;
    
     
 }
@@ -104,7 +107,8 @@ html, body{
 
 main{    
    margin-top: 100px;
-   margin-left: 70px;
+   margin-left: 20px;
+   margin-right-: 20px;
    width: calc(100% - 346px); /* Sets the width of the main tag to subtract the width of the aside tag */
 }
 

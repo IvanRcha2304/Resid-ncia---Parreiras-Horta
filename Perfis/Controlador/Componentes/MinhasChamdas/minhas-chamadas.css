@@ -63,8 +63,7 @@ hr {
 }
 
 .campos-busca-avancada-form {
-    display: flex;
-    /* justify-content: space-evenly; */
+    display: flex;    
     gap: 2vw;
     margin-bottom: 20px;
 }

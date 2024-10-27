@@ -89,7 +89,7 @@
                         <div>
                             <label for="department">Departamento:</label>
                             <select id="departamento" name="departamento">
-                                <option></option>
+                                <option value="select">Selecione</option>
                                 <option value="val1">ASCOM</option>
                                 <option value="val2">CONTIN</option>
                                 <option value="val3">ASTEC</option>
@@ -104,6 +104,7 @@
                         <div>
                             <label for="status">Situação:</label>
                             <select id="status" name="status">
+                                <option value="select">Selecione</option>
                                 <option value="val1">Ativo</option>
                                 <option value="val2">Em Espera</option>
                                 <option value="val3">Pendente</option>
@@ -111,14 +112,13 @@
                         </div>
                         <div>
                             <label for="date">Data:</label>
-                            <input type="text" id="date" name="date" placeholder="dd/mm/yyyy">
+                            <input type="datetime-local" id="date" name="date">
                         </div>
                         <div>
-                            <label for="type">Colaborador</label>
-                        <select id="type" name="type">
-                            <option value="all">Todos</option>
-                        </select>
+                            <label for="type">Colaborador:</label>
+                            <input type="text" id="colaborador" name="colaborador">
                         </div>
+                        
                     </div>
 
                     <div>
