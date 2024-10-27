@@ -80,8 +80,9 @@ header {
     display: flex;
     flex-direction: column;
     padding-top: 100px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 140px;
+    gap: 15px;
 
 }
 #menu-lateral a {
