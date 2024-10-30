@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body{
+    display: flex; 
+    margin: 0;
+    flex-flow: column; 
+    height: 100vh;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+nav{
+    display: flex;
+    background: #164590;
+    width: 100%;
+    height: 90px;
+    justify-content: center;
+    
+}
+.menu_top{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 14px;
+    margin-right: 24px;
+    align-items: end;
+    margin-bottom: 18px;
+    margin-top: 7px;
+}
+#logo_central_de_chamadas{
+    width: 220px;
+    height: 40px;
+}
+#person_icon{
+    width: 40px;
+    height: 37px;
+}
+.nome_user{
+    display: flex;
+    justify-content: center;
+}
+#nome_usuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-left: 10px;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.conteudo_prinicipal{
+    position: static;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+   
+}
+aside{ 
+    position: static;
+    background-color: #164590;
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+header{
+    background-color: aliceblue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-between;
+} 
+
+header .icone_voltar{
+    width: auto;
+    display: flex; 
+    justify-content: space-between;
+}
+header .icone_voltar .voltar{
+    padding: 30px;
+    margin-right: 900px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+header .conteudo_user{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+header .conteudo_user img{
+    margin-left: 60px;
+    width: 180px;
+    height: 180px;
+}
+header .conteudo_user .text{
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+
+}
+header .conteudo_user span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 0;
+}
+header .conteudo_user .text h1{
+    display: flex;
+    color: #164590;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+    border-bottom: 2px solid #7B7B7B;
+}
+header .conteudo_user .text h2{
+    color: #000000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 10px;
+}
+header .conteudo_user .text p{
+    color: #7B7B7B;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 10px;
+}
+header .conteudo_user span{
+    border-bottom: 0.7px solid #7B7B7B;
+}
+header .bottons_confir button{
+    padding: 30px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+header .conteiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    gap: 20px;
+}
+
+aside .logo{
+    width: 150px;
+    height: 158px;
+    margin: 26px 45px 30px;
+}
+
+.button{ 
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #FFF;
+    font-family:"Roboto";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 0;
+    border-color: transparent;
+}
+.button i{
+    width: 20px;
+    height: 20px;
+}
+.button i img{
+    width: 100%;
+    height: 100%;
+}
+.button .text{
+    text-align: center;
+}
+aside .divisaoSideBar{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+aside .divisaoSideBar h1{
+    color: #FFF;
+    font-family:"Roboto";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+@media (max-width:450px) {
+    #logo_central_de_chamadas{
+        width: 110px;
+        height: 20px; 
+    }
+
+    #person_icon{
+        width: 20px;
+        height: 17px;
+    }
+    #nome_usuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-left: 10px;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
+    nav{
+        display: flex;
+        background: #164590;
+        width: 100%;
+        height: 50px;
+        justify-content: center;
+        
+    }
+    .menu_top {
+        margin-bottom: 10px;
+    }
+    aside .logo {
+        width: 60px;
+        height: 68px;
+        margin: 26px 35px 30px;
+    }
+    .button {
+        padding: 5px 13px;
+        margin: 2px 0;
+        background-color: transparent;
+        text-align: left;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #FFF;
+        font-family: "Roboto";
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border-radius: 0;
+        border-color: transparent;
+    }
+    .button i{
+        width: 13px;
+        height: 13px;
+    }
+    aside .divisaoSideBar h1{
+        color: #FFF;
+        font-family:"Roboto";
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+
+
+
+
+
+
+
+}
+
