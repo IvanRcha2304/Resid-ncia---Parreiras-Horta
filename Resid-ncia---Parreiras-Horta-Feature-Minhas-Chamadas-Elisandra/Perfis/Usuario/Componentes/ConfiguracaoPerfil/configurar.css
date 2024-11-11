@@ -1,0 +1,141 @@
+@import url("/Resid-ncia---Parreiras-Horta-Feature-Minhas-Chamadas-Elisandra/style.css");
+main{
+    display: flex;
+    gap: 140px;
+    align-items: center;
+    flex-direction: column;
+}
+#voltar{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding-left: 100px;
+    
+}
+#voltar img{
+    width: 46px;
+    height: 49px;
+}
+.conteudo_user{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    
+}
+.conteudo_user section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+}
+.conteudo_user section .gestor{
+   
+    left: 370px;
+    width: 650px;
+    right: 100%;
+}
+.conteudo_user section .gestor hr{
+    width: 650px;
+    height: 1px;
+    background: #7B7B7B;
+}
+.conteudo_user section .gestor p{
+    width: 382px;
+    height: 49px;
+    color: #164590;
+    font-family: Roboto;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-bottom: 10px;
+}
+.conteudo_user section  .nome {
+    width: 600px;
+    right: 100%;
+} 
+.conteudo_user section .nome p{
+    width: 79px;
+    height: 34px;
+    color: #164590;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.conteudo_user section .nome hr{
+    width: 600px;
+    height: 1px;
+    background: #7B7B7B;
+}
+.conteudo_user section .nome p2{
+    width: 149px;
+    height: 23px;
+    color: #909090;
+    text-align: center;
+    justify-items: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.conteudo_user section  #texo_conteudo_info{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    text-align: center;
+    justify-items: center;
+}
+.conteudo_user section .cargo{
+    width: 600px;
+    right: 100%;
+}
+.conteudo_user section .cargo p{
+    width: 79px;
+    height: 34px;
+    color: #164590;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.conteudo_user section .cargo hr{
+    width: 600px;
+    height: 1px;
+    background: #7B7B7B;
+}
+.conteudo_user section .cargo p2{
+    width: 149px;
+    height: 23px;
+    color: #909090;
+    text-align: center;
+    justify-items: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.conteudo_user section img{
+    width: 251px;
+    height: 242px;
+}
+#buttons_inferior{
+    width: 197px;
+    height: 46px;
+}
+main .buttons_inferior{
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    width: auto;
+}
+main #buttons_edit{
+    all: unset;
+}
