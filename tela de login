@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Usuário</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            padding-top: 50px;
+            position: relative;
+        }
+        .logo {
+            width: 240px;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+        }
+        form {
+            background-color: #164590;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            margin-top: 100px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 50%;
+            padding: 10px;
+            background-color: white;
+            color: #164590;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            align-self: center;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #e0e0e0;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 15px;
+            color: white;
+        }
+        .register-link a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://2.bp.blogspot.com/-_-byeEg_Nvs/Tfdi8XorkDI/AAAAAAAAAAQ/GXdt1OsCaYE/s1600/Figura1.jpg" alt="Logo" class="logo">
+    <form id="loginForm" onsubmit="login(event)">
+        <h1>Login</h1>
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required maxlength="11" pattern="\d{11}" placeholder="Digite apenas números">
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <input type="submit" value="Entrar">
+
+        <div class="register-link">
+            Não possui conta? <a href="tela_de_cadastro.html">Cadastre-se</a>
+        </div>
+    </form>
+    <script>
+        function login(event) {
+            event.preventDefault(); // Impede o envio do formulário
+            // Aqui você pode adicionar a lógica de autenticação
+            alert("Login realizado com sucesso!"); // Simulação de login
+            // Redirecionar para uma nova página após o login
+            // window.location.href = 'home.html'; // Exemplo de redirecionamento
+        }
+    </script>
+</body>
+</html>
