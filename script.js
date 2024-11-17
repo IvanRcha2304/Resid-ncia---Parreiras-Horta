@@ -15,34 +15,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 });
 
+
 function obterDepartamentos() {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            method: 'POST',
-            url: 'http://localhost:8080/login',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            data: {
-                username: 'elisandralima.9336@gmail.com',
-                password: '123456'
-            },
-            xhrFields: {
-                withCredentials: true // Incluir credenciais para armazenamento de cookies
-            },
-            success: function () {
-                console.log('Login efetuado com sucesso');
-
-                // Após o login, chamar requestObterDepartamentos
-                requestObterDepartamentos().then(resolve).catch(reject);
-            },
-            error: function (error) {
-                console.log('Login falhou', error);
-                reject(error);
-            }
-        });
-    });
-}
-
-function requestObterDepartamentos() {
     return new Promise((resolve, reject) => {
         $.ajax({
             method: 'GET',
@@ -59,5 +33,58 @@ function requestObterDepartamentos() {
                 reject(error);
             }
         });
+    });
+}
+
+function login(event) {
+    event.preventDefault();
+    
+    const data = Object.fromEntries(new FormData(event.target).entries()); // pega os dados do formulario e converte para um objeto JS
+    
+    const email = data.email    
+    const password = data.senha
+    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
+
+    // Valida se a senha informada pelo usuario deu match com o padrão do regex
+    if(!regex.test(password)){
+        alert('Sua senha tem que ter pelo menos letras maiuculas e minsuculas, numeros, caracteres especiais@!$&.')
+        return // O return é para sair do método de login e não executar mais nenhum comando dessa função
+    }
+
+    $.ajax({
+        method: 'POST',
+        url: 'http://localhost:8080/login',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: {
+            username: email,
+            password: password,
+        },
+        xhrFields: {
+            withCredentials: true // Incluir credenciais para armazenamento de cookies
+        },
+        success: function(resposta) {
+            // pegar o JSON da resposta do endpoint
+            const roles = resposta.roles
+            const papelUsuario = roles[0]
+
+            if (papelUsuario === 'ADMIN'){
+                window.location.href = '/Perfis/Admnistrador/Componentes/Central/central.html'
+            }
+            else if (papelUsuario === 'DEPARTAMENTO_CHEFE'){
+                window.location.href = '/Perfis/Gestor/Componentes/Central/central.html'                
+            }
+            else if (papelUsuario === 'CONTROLE_QUALIDADE') {
+                window.location.href = '/Perfis/Controlador/Componentes/Central/central.html'
+            }
+            else{
+                window.location.href = '/Perfis/Usuario/Componentes/Central/central.html'
+            }  
+            
+        },
+        error: function (error) {
+            console.log('Login falhou', error);
+            window.alert('Login Falhou')
+            reject(error);
+        }
     });
 }

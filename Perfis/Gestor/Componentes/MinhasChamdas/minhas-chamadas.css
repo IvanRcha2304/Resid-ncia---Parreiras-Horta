@@ -92,6 +92,7 @@ button {
     font-size:var(--tamanho-fonte);
     width: 210px;
     height: 32px;
+    cursor: pointer;
 }
 
 button[type="reset"] {
