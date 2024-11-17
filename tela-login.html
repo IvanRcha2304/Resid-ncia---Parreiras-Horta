@@ -40,7 +40,7 @@
             display: block;
             margin: 10px 0 5px;
         }
-        input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 8px;
@@ -82,8 +82,8 @@
     <img src="https://2.bp.blogspot.com/-_-byeEg_Nvs/Tfdi8XorkDI/AAAAAAAAAAQ/GXdt1OsCaYE/s1600/Figura1.jpg" alt="Logo" class="logo">
     <form id="loginForm" onsubmit="login(event)">
         <h1>Login</h1>
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" required maxlength="11" pattern="\d{11}" placeholder="Digite apenas números">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
 
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required>
@@ -91,17 +91,13 @@
         <input type="submit" value="Entrar">
 
         <div class="register-link">
-            Não possui conta? <a href="tela_de_cadastro.html">Cadastre-se</a>
+            Não possui conta? 
+            <a href="/Perfis/Admnistrador/Componentes/Cadastramento/tela-cadastro.html">Cadastre-se</a>
         </div>
     </form>
-    <script>
-        function login(event) {
-            event.preventDefault(); // Impede o envio do formulário
-            // Aqui você pode adicionar a lógica de autenticação
-            alert("Login realizado com sucesso!"); // Simulação de login
-            // Redirecionar para uma nova página após o login
-            // window.location.href = 'home.html'; // Exemplo de redirecionamento
-        }
-    </script>
+    
 </body>
+
+<script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </html>
