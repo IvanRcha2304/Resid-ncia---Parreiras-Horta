@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
+    const usernameElement = document.getElementById("username")    
+    if(usernameElement){
+        const receberUsuario = window.localStorage.getItem("usuario")
+        usernameElement.innerText = receberUsuario
+    }
+
 });
 
 
@@ -52,7 +58,7 @@ function login(event) {
     }
 
     $.ajax({
-        method: 'POST',
+        method: 'POST', //inseri ou envia informações
         url: 'http://localhost:8080/login',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: {
@@ -64,8 +70,13 @@ function login(event) {
         },
         success: function(resposta) {
             // pegar o JSON da resposta do endpoint
+            
             const roles = resposta.roles
             const papelUsuario = roles[0]
+            const nomeUsuario = resposta.username
+
+            window.localStorage.setItem('usuario', nomeUsuario)
+
 
             if (papelUsuario === 'ADMIN'){
                 window.location.href = '/Perfis/Admnistrador/Componentes/Central/central.html'
