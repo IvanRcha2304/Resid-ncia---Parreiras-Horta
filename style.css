@@ -113,4 +113,8 @@ main{
    width: calc(100% - 346px); /* Sets the width of the main tag to subtract the width of the aside tag */
 }
 
+#username{
+    color: white;
+}
+
 
