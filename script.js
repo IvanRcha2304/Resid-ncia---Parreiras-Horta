@@ -19,6 +19,51 @@ document.addEventListener('DOMContentLoaded', async function () {
         usernameElement.innerText = receberUsuario
     }
 
+   
+    const BodyListaNaoConformidades = document.getElementsByClassName("ListaDeNaoConformidades")[0]
+    if(BodyListaNaoConformidades){
+        const naoConformidades = await obterNaoConformidades();
+
+        naoConformidades.forEach(async (naoConformidade) => {
+            const tr = document.createElement('tr');
+            const statusNaoConformidades = await obterStatusNaoConformidadesPorId(naoConformidade.statusId)
+            const departamento = await obterDepartamentoPorId(naoConformidade.departamentoId)
+            const dataAbertura = new Date(naoConformidade.dataAbertura)
+
+            tr.innerHTML = `
+                <td>${naoConformidade.usuarioNome}</td>
+                <td>${dataAbertura.toLocaleDateString("pt-BR")}</td>
+                <td>${statusNaoConformidades.nome}</td>
+                <td>${departamento.sigla}</td>
+                <td class="botoes-acao">
+                    <button id='${naoConformidade.id}' class="btn edit-btn">
+                        <i class="fas fa-pen"></i>
+                        <span class="tooltip">Editar</span>
+                    </button>
+                    <button id='${naoConformidade.id}' class="btn confirm-btn">
+                        <i class="fas fa-check"></i>
+                        <span class="tooltip">Confirmar</span>
+                    </button>
+                    <button id='${naoConformidade.id}' class="btn cancel-btn">
+                        <i class="fas fa-times"></i>
+                        <span class="tooltip">Cancelar</span>
+                    </button>
+                    <button id='${naoConformidade.id}' class="btn delete-btn">
+                        <i class="fas fa-trash"></i>
+                        <span class="tooltip">Apagar</span>
+                    </button>
+                </td>
+            `
+
+            tr.querySelector('.edit-btn').addEventListener('click', () => {
+                window.location.href = `/Perfis/Admnistrador/Componentes/MinhasChamdas/editar-minhas-chamadas.html?id=${naoConformidade.id}`;
+            });
+
+            BodyListaNaoConformidades.appendChild(tr)
+        }
+
+        )
+    }
 });
 
 
@@ -97,5 +142,66 @@ function login(event) {
             window.alert('Login Falhou')
             reject(error);
         }
+    });
+}
+
+
+function obterNaoConformidades() {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            method: 'GET',
+            url: 'http://localhost:8080/api/nao-conformidades',
+            headers: { 'Content-Type': 'application/json' },
+            xhrFields: { //informa para a API que o usuario esta autenticado
+                withCredentials: true // Incluir credenciais para envio de cookies
+            },
+            success: function (result) {
+                resolve(result); // Retorna a lista de nao-conformidades
+            },
+            error: function (error) {
+                console.log('Falha ao obter lista de não-conformidades', error);
+                reject(error);
+            }
+        });
+    });
+}
+
+function obterStatusNaoConformidadesPorId(id) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            method: 'GET',
+            url: `http://localhost:8080/api/status-nao-conformidades/${id}`,
+            headers: { 'Content-Type': 'application/json' },
+            xhrFields: { //informa para a API que o usuario esta autenticado
+                withCredentials: true // Incluir credenciais para envio de cookies
+            },
+            success: function (result) {
+                resolve(result); 
+            },
+            error: function (error) {
+                console.log('Falha ao obter status não-conformidade', error);
+                reject(error);
+            }
+        });
+    });
+}
+
+function obterDepartamentoPorId(id) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            method: 'GET',
+            url: `http://localhost:8080/api/departamentos/${id}`,
+            headers: { 'Content-Type': 'application/json' },
+            xhrFields: { //informa para a API que o usuario esta autenticado
+                withCredentials: true // Incluir credenciais para envio de cookies
+            },
+            success: function (result) {
+                resolve(result); 
+            },
+            error: function (error) {
+                console.log('Falha ao obter departamentos', error);
+                reject(error);
+            }
+        });
     });
 }
