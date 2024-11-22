@@ -14,22 +14,48 @@ header {
 #menu_lateral {
     background-color: #164590;
     width: 342px;
-    height: calc(100vh - 70px);
+    height: calc(100% - 70px);
     position: static;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 #menu_lateral #logo {
-    position: absolute;
     width: 175px;
     height: 188px;
-    top: 55px;
-    left: 60px;
+}
+#texto_link img{
+    width: 23px;
+    height: 25px;
+
 }
 
 #links {
-    position: absolute;
-    top: 345px;
-    left: 75px;
+    width: 300px;
+
+}
+#links a{
+    text-decoration: none;
+    color: inherit; /* Mantém a cor herdada */
+    display: inline-block;
+    transition: transform 0.2s ease-in-out; /* Suaviza a transformação */
+}
+/* Animação ao clicar (efeito de escala) */
+a:active {
+    transform: scale(0.95); /* Reduz levemente o tamanho */
+}
+
+#frame_link{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 100px;
+
 }
 
 #links p {
@@ -39,13 +65,16 @@ header {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    display: inline;
 }
 
 #links #texto_link {
     display: flex;
+    justify-content: left;
+    align-items: center;
     gap: 9.3px;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom:30px;
 }
 
 #logo_central_de_chamadas {
@@ -116,7 +145,7 @@ body {
     align-items: center;
 }
 
-
+/* Parte do Conteudo */
 #conteudoMain{
     display: flex;
     align-items: center;
