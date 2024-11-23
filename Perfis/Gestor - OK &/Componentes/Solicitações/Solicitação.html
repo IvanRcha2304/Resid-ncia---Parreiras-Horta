@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minhas Chamadas</title>
+    <link rel="stylesheet" href="Solicitação.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/ec36def5cc.js" crossorigin="anonymous"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header> <!--Cabecalho e navegacao principal-->
+        <div>
+            <h1>Central de Chamadas</h1>
+            <hr width="305px" style="border-color:#FFFFFF;">
+            <h4 id="sub-titulo">Parreiras Horta</h4>
+
+        </div>
+        <div id="nome-usuario">
+            <i class="fa-regular fa-user fa-2x"></i>
+            <a href="#"><h3 id="username">Nome do Controlador</h3></a>
+
+
+        </div>
+    </header>
+    <div id="conteudo-principal">
+        <aside> <!--Barra lateral com links ou informacoes-->
+            <div align="center" id="centralizador-lateral">
+                <img src="../../../../assets/imgs/fsph_logo.svg">
+
+                <div id="menu-lateral">
+
+                    <a href="../Central/central.html">
+                        <i class="fa-solid fa-house" style="color: #FFFFFF;"></i>
+                        <span>Pagina Inicial</span>
+                    </a>                    
+                    <a href="../Não Conformidades/Não Conformidades.html">
+                        <i class="fa-solid fa-comment"></i>
+                        <span>Não Conformidades</span>
+                    </a>
+                    <a href="Solicitação.html">
+                        <i class="fa-solid fa-comment"></i>
+                        <span>Solicitações</span>
+                    </a>
+                </div>
+
+
+
+            </div>
+
+        </aside>
+
+        <main> <!--Conteudo pricipal da pagina-->
+
+            <div>
+                <nav>
+                    <div id="navegacao">
+                        <i class="fa-solid fa-house" style="color: #242424;"></i>
+                        <a href="#">Inicio</a>
+                        <i class="fa-duotone fa-solid fa-arrow-right" style="color: #8C8C8C;"></i>
+                        <a href="#">Solicitações</a>
+
+                    </div>
+                    <div class="campo-busca">
+                        <input type="text" placeholder="Buscar Usuário" id="campo-busca-input">
+                        <button class="btn edit-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span class="tooltip">Buscar</span>
+                        </button>                       
+                   
+
+                    </div>
+                </nav>
+            </div>
+
+            <div class="busca-avancada">
+                <h2>Busca Avançada</h2>
+                <hr width="75%" size="1em">
+                <form id="busca-avancada-form">
+                    <div class="campos-busca-avancada-form">
+                        <div>
+                            <label for="type">Nome do Usuário:</label>
+                            <input type="text" id="colaborador" name="colaborador" placeholder="Digite o nome">
+                        </div>
+                        <div>
+                            <label for="type">Código:</label>
+                            <input type="text" id="colaborador" name="colaborador" placeholder="Digite o código">
+                        </div>
+                        
+                        <div>
+                            <label for="status">Situação:</label>
+                            <select id="status" name="status">
+                                <option value="select">Selecione</option>
+                                <option value="val1">Aprovada</option>
+                                <option value="val2">Recusada</option>
+                                <option value="val3">Em Adamento</option>
+                            </select> 
+                        </div>
+                        
+                        <div>
+                            <label for="date">Data:</label>
+                            <input type="datetime-local" id="date" name="date">
+                        </div>
+       
+                        
+                    </div>
+
+                    <div>
+                        <button type="submit">
+                            <i class="fa-solid fa-check"></i>
+                            Buscar
+                        </button>
+                        <button type="reset">
+                            <i class="fa-solid fa-x"></i>
+                            Limpar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do usuário</th>
+                            <th>Data</th>
+                            <th>Situação</th>
+                            <th>Código</th>
+                            <th class="botoes-acao">Ações</th>
+                        </tr>
+                        
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Joelma Santos</td>
+                            <td>Não Informado</td>
+                            <td>Ativo</td>
+                            <td>Nelson J.</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Raquel da Souza</td>
+                            <td>Não Informado</td>
+                            <td>Desabilitado</td>
+                            <td>Não Informado</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mario Joaquim</td>
+                            <td>26/10/2024</td>
+                            <td>Pendente</td>
+                            <td>ASCAP</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Silvio Silva</td>
+                            <td>26/10/2024</td>
+                            <td>Em espera</td>
+                            <td>ASTECN</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Wetany Real</td>
+                            <td>26/10/2024</td>
+                            <td>Ativo</td>
+                            <td>PROJUR</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Alírio Chaves</td>
+                            <td>26/10/2024</td>
+                            <td>Em espera</td>
+                            <td>AGEQ</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nathan Lima</td>
+                            <td>26/10/2024</td>
+                            <td>Pendente</td>
+                            <td>ASPLAN</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nadson Feira</td>
+                            <td>26/10/2024</td>
+                            <td>Ativo</td>
+                            <td>CONFIN</td>
+                            <td class="botoes-acao">
+                                <a href="Inspecionar/Inspecionar.html">
+                                    <button class="btn edit-btn">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span class="tooltip">Inspecionar</span>
+                                    </button> 
+                                </a>
+                                <button class="btn confirm-btn">
+                                    <i class="fas fa-check"></i>
+                                    <span class="tooltip">Confirmar</span>
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    <span class="tooltip">Apagar</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="paginacao">                
+                <div>
+                    <i class="fa-solid fa-chevron-left"></i>
+                    &nbsp; 1 de 4 &nbsp;
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer> <!--Rodapé-->
+
+    </footer>
+</body>
+<script src="../script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+</html>
