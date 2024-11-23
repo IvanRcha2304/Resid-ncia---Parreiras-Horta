@@ -1,0 +1,1 @@
+Falta a tela que mostra em detalhes da solicitação da não conformidade, do perfil do gestor, mostra a não conformidade em detalhes ela tá na pasta Solicitações/Inspecionar 
