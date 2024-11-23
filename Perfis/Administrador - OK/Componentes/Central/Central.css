@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+#conteudo-principal{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+#centralizador-lateral {
+    padding-top: 100px;
+    gap: 200px;
+}
+/* Parte do Conteudo */
+#conteudoMain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: calc(100% - 342px);
+}
+
+#title_chamadas{
+    color: #164590;
+    font-size: 2.2rem;
+    font-weight: bold;
+    border-bottom: solid 2px #164590;
+    width: 800px;
+    place-items: top;
+}
+
+#mainStatus{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#chamadas {
+    border: solid #ccc 4px;
+    border-radius: 10px;
+    height: 400px;
+    width: auto;
+    overflow: hidden;
+}
+
+#perfis_cadastrados{
+    border: solid #ccc 4px;
+    border-radius: 10px;
+    height: 400px;
+    width: 80%;
+    overflow: hidden;
+}
+
+#titleStatusChamadas{
+    color: #606060;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 10px 70px;
+}
+
+#titlePerfis{
+    color: #606060;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 10px 20px;
+}
+
+#conteudoChamadas{
+    height: 340px;
+
+}
+
+#conteudoPerfis{
+    height: 340px;
+}
+
+@media (max-width: 1080px){
+    #mainStatus{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #chamadas{
+        margin: 20px 
+    }
+
+    #perfis_cadastrados{
+        margin: 20px;
+    }
+
+    #title_chamadas{
+        width: 80%;
+    }
+
+    #conteudoChamadas{
+        height: 190px;
+    
+    }
+    
+    #conteudoPerfis{
+        height: 19oiuh v 0px;
+    }
+}

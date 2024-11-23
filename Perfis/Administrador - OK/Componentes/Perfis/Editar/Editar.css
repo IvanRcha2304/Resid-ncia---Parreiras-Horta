@@ -1,0 +1,151 @@
+@import url("../../../../../style.css");
+#conteudo-principal{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+#centralizador-lateral {
+    padding-top: 100px;
+    gap: 200px;
+}
+aside{
+    height: 100vh;
+}
+nav {
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navegacao a {
+    color: #8C8C8C;
+    text-decoration: auto;
+
+}
+
+#navegacao {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 14px;
+    margin-bottom: 10px;
+    
+
+}
+
+.departamento_add{
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    background: #D9D9D9;
+}
+#text_add{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 40px ;
+}
+#text_add h2{
+    text-align: center;
+    color: #164590;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+#departamento_add-form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 90px;
+    height: 100%;
+}
+.campos-add-form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+.campos-add-form .caixa_text{
+    padding: 0px 30px 0;
+}
+.campos-add-form label{
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.campos-add-form #text_box{
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 10px;
+    width: 230px;
+    height: 26px;
+}
+.campos-add-form #status{
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 10px;
+    width: 130px;
+    height: 26px;
+
+}
+.caixa_text_obb{
+    width: 100%;
+}
+.observacoes #text_box_obb{
+    width: 100%;
+    height: 200px;
+    border: unset;
+}
+.observacoes{
+    margin: 10px 40px 30px;
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+}
+.caixa_text_obb label{
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.buttons_end{
+    margin: 0px 30px 30px;
+    width: 100%;
+    display: flex;
+    gap: 10px; 
+}
+.button_end{
+    width: 142px;
+    height: 23px;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.buttons_end #salve{
+    background: #18AA00;
+    border: unset;
+}
+.buttons_end #excluir{
+    background: #F00;
+    border: unset;
+}
