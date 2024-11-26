@@ -181,3 +181,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error("Erro ao inicializar a página:", error);
     }
 });
+
+export function obterNaoConformidadePorId(id) {
+    return new Promise((resolve, reject) => {
+        try {
+            const naoConformidades = getLocalStorageItem("naoConformidades");
+            const naoConformidade = naoConformidades.find(item => item.id === id);
+
+            if (!naoConformidade) {
+                reject("Não conformidade não encontrada.");
+                return;
+            }
+
+            resolve(naoConformidade);
+        } catch (error) {
+            console.error("Erro ao obter não conformidade por ID:", error);
+            reject(error);
+        }
+    });
+}
