@@ -15,6 +15,9 @@ function setLocalStorageItem(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+
+
+
 // Função para registrar novo usuário
 export function registrarUsuario(nome, senha, chaveAcesso) {
     return new Promise((resolve, reject) => {
@@ -35,22 +38,6 @@ export function registrarUsuario(nome, senha, chaveAcesso) {
     });
 }
 
-// Funções genéricas para manipular o localStorage
-function getNextId(key) {
-    const currentId = localStorage.getItem(`${key}_id`) || 0;
-    const nextId = parseInt(currentId, 10) + 1;
-    localStorage.setItem(`${key}_id`, nextId);
-    return nextId;
-}
-
-function getLocalStorageItem(key) {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : [];
-}
-
-function setLocalStorageItem(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-}
 
 // API Simulada: Departamentos
 export function criarDepartamento(nome, sigla) {
