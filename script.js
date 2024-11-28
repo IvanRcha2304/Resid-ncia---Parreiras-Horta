@@ -1,40 +1,227 @@
-document.addEventListener('DOMContentLoaded', async function () {
-    const selectDepartamento = document.getElementById('departamento');
+// Funções genéricas para manipular o localStorage
+function getNextId(key) {
+    const currentId = localStorage.getItem(`${key}_id`) || 0;
+    const nextId = parseInt(currentId, 10) + 1;
+    localStorage.setItem(`${key}_id`, nextId);
+    return nextId;
+}
 
-    if (selectDepartamento) {
-        const departamentos = await obterDepartamentos();
+function getLocalStorageItem(key) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : [];
+}
 
-        departamentos.forEach(departamento => {
-            let option = document.createElement('option');
-            option.value = departamento.sigla;
-            option.textContent = departamento.nome;
+function setLocalStorageItem(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
 
-            selectDepartamento.appendChild(option)
-        });
+// Função para registrar novo usuário
+function registrarUsuario(nome, senha, chaveAcesso) {
+    const usuarios = getLocalStorageItem("usuarios");
+    const novoUsuario = {
+        id: getNextId("usuarios"),
+        nome,
+        senha,
+        chaveAcesso, // Administrador, Gestor, Controlador ou Usuário
+    };
+    usuarios.push(novoUsuario);
+    setLocalStorageItem("usuarios", usuarios);
+    return novoUsuario;
+}
+
+
+// API Simulada: Departamentos
+function criarDepartamento(nome, sigla) {
+    return new Promise((resolve, reject) => {
+        try {
+            const departamentos = getLocalStorageItem("departamentos");
+            const novoDepartamento = { id: getNextId("departamentos"), nome, sigla };
+            departamentos.push(novoDepartamento);
+            setLocalStorageItem("departamentos", departamentos);
+            resolve(novoDepartamento);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+function obterDepartamentos() {
+    const departamentos = getLocalStorageItem("departamentos");
+    return departamentos;
+}
+
+function obterDepartamentoPorId(id) {
+    const departamentos = getLocalStorageItem("departamentos");
+    const departamento = departamentos.find(dep => dep.id === id);
+    return departamento;
+}
+
+// API Simulada: Não Conformidades
+function criarNaoConformidade(usuarioNome, statusId, departamentoId, dataAbertura) {
+    const naoConformidades = getLocalStorageItem("naoConformidades");
+
+    const novaNaoConformidade = {
+        id: getNextId("naoConformidades"),
+        usuarioNome,
+        statusId,
+        departamentoId,
+        dataAbertura,
+    };
+
+    naoConformidades.push(novaNaoConformidade);
+    setLocalStorageItem("naoConformidades", naoConformidades);
+
+    return novaNaoConformidade;
+}
+
+function obterNaoConformidades() {
+    const naoConformidades = getLocalStorageItem("naoConformidades");
+    return naoConformidades;
+}
+
+function atualizarNaoConformidades(naoConformidades) {
+    setLocalStorageItem("naoConformidades", naoConformidades);
+}
+
+function obterNaoConformidadePorId(id) {
+    const naoConformidades = getLocalStorageItem("naoConformidades");
+    const naoConformidade = naoConformidades.find(item => item.id === id);
+
+    if (!naoConformidade) {
+        console.log("Não conformidade não encontrada.");
+        return;
     }
 
-    const usernameElement = document.getElementById("username")    
-    if(usernameElement){
-        const receberUsuario = window.localStorage.getItem("usuario")
-        usernameElement.innerText = receberUsuario
+    return naoConformidade;
+}
+
+function obterStatusNaoConformidadesPorId(id) {
+    const statusNaoConformidades = getLocalStorageItem("statusNaoConformidades");
+    const status = statusNaoConformidades.find(item => item.id === id);
+
+    if (!status) {
+        console.log("Status não conformidade não encontrada.");
+        return;
     }
 
-   
-    const BodyListaNaoConformidades = document.getElementsByClassName("ListaDeNaoConformidades")[0]
-    if(BodyListaNaoConformidades){
-        const naoConformidades = await obterNaoConformidades();
+    return status;
+}
 
-        naoConformidades.forEach(async (naoConformidade) => {
+function login(event) {
+    event.preventDefault();
+    
+    const data = Object.fromEntries(new FormData(event.target).entries()); // pega os dados do formulario e converte para um objeto JS
+        
+    const email = data.email
+    const password = data.senha
+    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
+
+    // Valida se a senha informada pelo usuario deu match com o padrão do regex
+    if(!regex.test(password)){
+        alert('Sua senha tem que ter pelo menos letras maiuculas e minsuculas, numeros, caracteres especiais@!$&.')
+        return // O return é para sair do método de login e não executar mais nenhum comando dessa função
+    }
+    
+    var resposta = getLocalStorageItem("loginResponse")
+    
+    if(resposta){
+        const roles = resposta.roles
+        const perfil = roles[0]
+
+        window.localStorage.setItem('usuario', email)
+        window.localStorage.setItem('perfil', perfil)
+        
+
+        if (perfil === 'ADMIN'){
+            window.location.href = '/Perfis/Administrador - OK/Componentes/Central/Central.html'
+        }
+        else if (perfil === 'DEPARTAMENTO_CHEFE'){
+            window.location.href = '/Perfis/Gestor - OK &/Componentes/Central/Central.html'                
+        }
+        else if (perfil === 'CONTROLE_QUALIDADE') {
+            window.location.href = '/Perfis/Controlador - OK/Componentes/Central/Central.html'
+        }
+        else{
+            window.location.href = '/Perfis/Usuario - OK/Componentes/Central/Central.html'
+        }  
+    } 
+    else {
+        console.log('Login falhou', error);
+        window.alert('Login Falhou')
+    }     
+}
+
+function filtrarNaoConformidades(event){
+    event.preventDefault();
+    
+    const data = Object.fromEntries(new FormData(event.target).entries()); // pega os dados do formulario e converte para um objeto JS
+
+    let naoConformidades = obterNaoConformidades();
+
+    console.log('Nome: ', data.colaborador)
+    if(data.colaborador !== ""){
+        naoConformidades = naoConformidades.filter(item => item.usuarioNome.toUpperCase() == data.colaborador.toUpperCase())
+    }
+
+    if(data.departamento != 'select'){
+        //const departamento = document.getElementById('departamento').options[data.departamento].innerText
+        naoConformidades = naoConformidades.filter(item => item.departamentoId == data.departamento)
+    }
+
+    if(data.status != 'select'){
+        naoConformidades = naoConformidades.filter(item => item.statusId == data.status)
+    }
+
+    limparTBodyTabela()
+    montarTBodyNaoConformidade(naoConformidades)
+}
+
+// Inicialização da página
+document.addEventListener('DOMContentLoaded', function () {
+    try {
+        const selectDepartamento = document.getElementById('departamento');
+        const usernameElement = document.getElementById("username");
+
+        // Populando dropdown de departamentos
+        if (selectDepartamento) {
+            const departamentos = obterDepartamentos();
+            departamentos.forEach(departamento => {
+                let option = document.createElement('option');
+                option.value = departamento.id;
+                option.textContent = departamento.nome;
+                selectDepartamento.appendChild(option);
+            });
+        }
+
+        // Exibindo nome do usuário logado
+        if (usernameElement) {
+            const usuario = localStorage.getItem("usuario");
+            usernameElement.innerText = usuario || "Usuário Desconhecido";
+        }
+
+        // Listando não conformidades
+        let naoConformidades = obterNaoConformidades();
+        montarTBodyNaoConformidade(naoConformidades)
+       
+    } catch (error) {
+        console.error("Erro ao inicializar a página:", error);
+    }
+});
+
+function montarTBodyNaoConformidade(naoConformidades){
+    if (naoConformidades) {
+        const bodyListaNaoConformidades = document.getElementsByClassName("ListaDeNaoConformidades")[0];
+
+        naoConformidades.forEach(naoConformidade => {
             const tr = document.createElement('tr');
-            const statusNaoConformidades = await obterStatusNaoConformidadesPorId(naoConformidade.statusId)
-            const departamento = await obterDepartamentoPorId(naoConformidade.departamentoId)
-            const dataAbertura = new Date(naoConformidade.dataAbertura)
+            const departamento = obterDepartamentoPorId(naoConformidade.departamentoId);
+            const statusNaoConformidade = obterStatusNaoConformidadesPorId(naoConformidade.statusId)
 
             tr.innerHTML = `
                 <td>${naoConformidade.usuarioNome}</td>
-                <td>${dataAbertura.toLocaleDateString("pt-BR")}</td>
-                <td>${statusNaoConformidades.nome}</td>
-                <td>${departamento.sigla}</td>
+                <td>${new Date(naoConformidade.dataAbertura).toLocaleDateString("pt-BR")}</td>
+                <td>${statusNaoConformidade.nome}</td>
+                <td>${departamento ? departamento.sigla : "Desconhecido"}</td>
                 <td class="botoes-acao">
                     <button id='${naoConformidade.id}' class="btn edit-btn">
                         <i class="fas fa-pen"></i>
@@ -53,155 +240,38 @@ document.addEventListener('DOMContentLoaded', async function () {
                         <span class="tooltip">Apagar</span>
                     </button>
                 </td>
-            `
+            `;
 
-            tr.querySelector('.edit-btn').addEventListener('click', () => {
-                window.location.href = `/Perfis/Admnistrador/Componentes/MinhasChamdas/editar-minhas-chamadas.html?id=${naoConformidade.id}`;
-            });
+            const perfil = window.localStorage.getItem('perfil')
 
-            BodyListaNaoConformidades.appendChild(tr)
-        }
-
-        )
-    }
-});
-
-
-function obterDepartamentos() {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            method: 'GET',
-            url: 'http://localhost:8080/api/departamentos',
-            headers: { 'Content-Type': 'application/json' },
-            xhrFields: {
-                withCredentials: true // Incluir credenciais para envio de cookies
-            },
-            success: function (result) {
-                resolve(result); // Retorna a lista de departamentos
-            },
-            error: function (error) {
-                console.log('Falha ao obter departamentos', error);
-                reject(error);
+            if (perfil === 'ADMIN' || perfil === 'DEPARTAMENTO_CHEFE'){
+                tr.querySelector('.edit-btn').addEventListener('click', () => {
+                    window.location.href = `/Perfis/Gestor - OK &/Componentes/Não Conformidades/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
+                });
             }
-        });
-    });
-}
-
-function login(event) {
-    event.preventDefault();
-    
-    const data = Object.fromEntries(new FormData(event.target).entries()); // pega os dados do formulario e converte para um objeto JS
-    
-    const email = data.email    
-    const password = data.senha
-    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
-
-    // Valida se a senha informada pelo usuario deu match com o padrão do regex
-    if(!regex.test(password)){
-        alert('Sua senha tem que ter pelo menos letras maiuculas e minsuculas, numeros, caracteres especiais@!$&.')
-        return // O return é para sair do método de login e não executar mais nenhum comando dessa função
-    }
-
-    $.ajax({
-        method: 'POST', //inseri ou envia informações
-        url: 'http://localhost:8080/login',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        data: {
-            username: email,
-            password: password,
-        },
-        xhrFields: {
-            withCredentials: true // Incluir credenciais para armazenamento de cookies
-        },
-        success: function(resposta) {
-            // pegar o JSON da resposta do endpoint
-            
-            const roles = resposta.roles
-            const papelUsuario = roles[0]
-            const nomeUsuario = resposta.username
-
-            window.localStorage.setItem('usuario', nomeUsuario)
-
-
-            if (papelUsuario === 'ADMIN'){
-                window.location.href = '/Perfis/Admnistrador/Componentes/Central/central.html'
-            }
-            else if (papelUsuario === 'DEPARTAMENTO_CHEFE'){
-                window.location.href = '/Perfis/Gestor/Componentes/Central/central.html'                
-            }
-            else if (papelUsuario === 'CONTROLE_QUALIDADE') {
-                window.location.href = '/Perfis/Controlador/Componentes/Central/central.html'
+            else if (perfil === 'CONTROLE_QUALIDADE') {
+                tr.querySelector('.edit-btn').addEventListener('click', () => {
+                    window.location.href = `/Perfis/Controlador - OK/Componentes/Não Conformidades/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
+                });
             }
             else{
-                window.location.href = '/Perfis/Usuario/Componentes/Central/central.html'
+                tr.querySelector('.edit-btn').addEventListener('click', () => {
+                    window.location.href = `/Perfis/Usuario - OK/Componentes/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
+                });
             }  
+
+            tr.querySelector('.delete-btn').addEventListener('click', () => {
+                tr.remove()
+                naoConformidades = naoConformidades.filter(item => item.id !== naoConformidade.id)
+                atualizarNaoConformidades(naoConformidades)
+            });
             
-        },
-        error: function (error) {
-            console.log('Login falhou', error);
-            window.alert('Login Falhou')
-            reject(error);
-        }
-    });
+            bodyListaNaoConformidades.appendChild(tr);
+        });
+    }
 }
 
-
-function obterNaoConformidades() {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            method: 'GET',
-            url: 'http://localhost:8080/api/nao-conformidades',
-            headers: { 'Content-Type': 'application/json' },
-            xhrFields: { //informa para a API que o usuario esta autenticado
-                withCredentials: true // Incluir credenciais para envio de cookies
-            },
-            success: function (result) {
-                resolve(result); // Retorna a lista de nao-conformidades
-            },
-            error: function (error) {
-                console.log('Falha ao obter lista de não-conformidades', error);
-                reject(error);
-            }
-        });
-    });
-}
-
-function obterStatusNaoConformidadesPorId(id) {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            method: 'GET',
-            url: `http://localhost:8080/api/status-nao-conformidades/${id}`,
-            headers: { 'Content-Type': 'application/json' },
-            xhrFields: { //informa para a API que o usuario esta autenticado
-                withCredentials: true // Incluir credenciais para envio de cookies
-            },
-            success: function (result) {
-                resolve(result); 
-            },
-            error: function (error) {
-                console.log('Falha ao obter status não-conformidade', error);
-                reject(error);
-            }
-        });
-    });
-}
-
-function obterDepartamentoPorId(id) {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            method: 'GET',
-            url: `http://localhost:8080/api/departamentos/${id}`,
-            headers: { 'Content-Type': 'application/json' },
-            xhrFields: { //informa para a API que o usuario esta autenticado
-                withCredentials: true // Incluir credenciais para envio de cookies
-            },
-            success: function (result) {
-                resolve(result); 
-            },
-            error: function (error) {
-                console.log('Falha ao obter departamentos', error);
-                reject(error);
-            }
-        });
-    });
+function limparTBodyTabela(){
+    const bodyListaNaoConformidades = document.getElementsByClassName("ListaDeNaoConformidades")[0];
+    bodyListaNaoConformidades.innerHTML = ''
 }

@@ -25,9 +25,9 @@
         </div>
         <div id="nome-usuario">
             <i class="fa-regular fa-user fa-2x"></i>
-            <a href="#"><h3 id="username">Nome do Adiministrador</h3></a>
-
-
+            <a href="/tela-login.html">
+                <h3 id="username">Nome do Administrador</h3>
+            </a>
         </div>
     </header>
     <div id="conteudo-principal">
@@ -86,7 +86,7 @@
             <div class="busca-avancada">
                 <h2>Busca Avançada</h2>
                 <hr width="75%" size="1em">
-                <form id="busca-avancada-form">
+                <form id="busca-avancada-form" onsubmit="filtrarNaoConformidades(event)">
                     <div class="campos-busca-avancada-form">
                         <div>
                             <label for="type">Nome:</label>
@@ -102,9 +102,9 @@
                             <label for="status">Situação:</label>
                             <select id="status" name="status">
                                 <option value="select">Selecione</option>
-                                <option value="val1">Ativo</option>
-                                <option value="val2">Em Espera</option>
-                                <option value="val3">Pendente</option>
+                                <option value="1">Ativo</option>
+                                <option value="2">Pendente</option>
+                                <option value="3">Em Espera</option>
                             </select> 
                         </div>
                         <div>
@@ -138,179 +138,7 @@
                             <th>Departamento</th>
                             <th class="botoes-acao">Ações</th>
                         </tr>
-                        
-
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Joelma Santos</td>
-                            <td>26/10/2024</td>
-                            <td>Ativo</td>
-                            <td>ASCOM</td>
-                            <td class="botoes-acao">
-    
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Raquel da Souza</td>
-                            <td>26/10/2024</td>
-                            <td>Em espera</td>
-                            <td>CONTIN</td>
-                            <td class="botoes-acao">
-                               
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mario Joaquim</td>
-                            <td>26/10/2024</td>
-                            <td>Pendente</td>
-                            <td>ASCAP</td>
-                            <td class="botoes-acao">
-                                
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Silvio Silva</td>
-                            <td>26/10/2024</td>
-                            <td>Em espera</td>
-                            <td>ASTECN</td>
-                            <td class="botoes-acao">
-                               
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Wetany Real</td>
-                            <td>26/10/2024</td>
-                            <td>Ativo</td>
-                            <td>PROJUR</td>
-                            <td class="botoes-acao">
-                                
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Alírio Chaves</td>
-                            <td>26/10/2024</td>
-                            <td>Em espera</td>
-                            <td>AGEQ</td>
-                            <td class="botoes-acao">
-                                
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nathan Lima</td>
-                            <td>26/10/2024</td>
-                            <td>Pendente</td>
-                            <td>ASPLAN</td>
-                            <td class="botoes-acao">
-                                
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nathan Lima</td>
-                            <td>26/10/2024</td>
-                            <td>Pendente</td>
-                            <td>ASPLAN</td>
-                            <td class="botoes-acao">
-                                
-                                <button class="btn confirm-btn">
-                                    <i class="fas fa-check"></i>
-                                    <span class="tooltip">Confirmar</span>
-                                </button>
-                                <button class="btn cancel-btn">
-                                    <i class="fas fa-times"></i>
-                                    <span class="tooltip">Cancelar</span>
-                                </button>
-                                <button class="btn delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span class="tooltip">Apagar</span>
-                                </button>
-                            </td>
-                        </tr>
-                        
+                    <tbody class="ListaDeNaoConformidades">
                     </tbody>
                 </table>
             </div>
