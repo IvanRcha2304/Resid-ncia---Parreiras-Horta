@@ -25,7 +25,7 @@
         </div>
         <div id="nome-usuario">
             <i class="fa-regular fa-user fa-2x"></i>
-            <a href="#">
+            <a href="/tela-login.html">
                 <h3 id="username">Nome do Administrador</h3>
             </a>
         </div>
@@ -86,7 +86,7 @@
             <div class="busca-avancada">
                 <h2>Busca Avançada</h2>
                 <hr width="75%" size="1em">
-                <form id="busca-avancada-form">
+                <form id="busca-avancada-form" onsubmit="filtrarNaoConformidades(event)">
                     <div class="campos-busca-avancada-form">
                         <div>
                             <label for="type">Nome:</label>
@@ -102,9 +102,9 @@
                             <label for="status">Situação:</label>
                             <select id="status" name="status">
                                 <option value="select">Selecione</option>
-                                <option value="val1">Ativo</option>
-                                <option value="val2">Em Espera</option>
-                                <option value="val3">Pendente</option>
+                                <option value="1">Ativo</option>
+                                <option value="2">Pendente</option>
+                                <option value="3">Em Espera</option>
                             </select> 
                         </div>
                         <div>

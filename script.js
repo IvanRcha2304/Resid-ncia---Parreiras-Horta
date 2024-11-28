@@ -151,12 +151,36 @@ function login(event) {
     }     
 }
 
+function filtrarNaoConformidades(event){
+    event.preventDefault();
+    
+    const data = Object.fromEntries(new FormData(event.target).entries()); // pega os dados do formulario e converte para um objeto JS
+
+    let naoConformidades = obterNaoConformidades();
+
+    console.log('Nome: ', data.colaborador)
+    if(data.colaborador !== ""){
+        naoConformidades = naoConformidades.filter(item => item.usuarioNome.toUpperCase() == data.colaborador.toUpperCase())
+    }
+
+    if(data.departamento != 'select'){
+        //const departamento = document.getElementById('departamento').options[data.departamento].innerText
+        naoConformidades = naoConformidades.filter(item => item.departamentoId == data.departamento)
+    }
+
+    if(data.status != 'select'){
+        naoConformidades = naoConformidades.filter(item => item.statusId == data.status)
+    }
+
+    limparTBodyTabela()
+    montarTBodyNaoConformidade(naoConformidades)
+}
+
 // Inicialização da página
 document.addEventListener('DOMContentLoaded', function () {
     try {
         const selectDepartamento = document.getElementById('departamento');
         const usernameElement = document.getElementById("username");
-        const bodyListaNaoConformidades = document.getElementsByClassName("ListaDeNaoConformidades")[0];
 
         // Populando dropdown de departamentos
         if (selectDepartamento) {
@@ -176,66 +200,78 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Listando não conformidades
-        if (bodyListaNaoConformidades) {
-            let naoConformidades = obterNaoConformidades();
-            naoConformidades.forEach(naoConformidade => {
-                const tr = document.createElement('tr');
-                const departamento = obterDepartamentoPorId(naoConformidade.departamentoId);
-                const statusNaoConformidade = obterStatusNaoConformidadesPorId(naoConformidade.statusId)
-
-                tr.innerHTML = `
-                    <td>${naoConformidade.usuarioNome}</td>
-                    <td>${new Date(naoConformidade.dataAbertura).toLocaleDateString("pt-BR")}</td>
-                    <td>${statusNaoConformidade.nome}</td>
-                    <td>${departamento ? departamento.sigla : "Desconhecido"}</td>
-                    <td class="botoes-acao">
-                        <button id='${naoConformidade.id}' class="btn edit-btn">
-                            <i class="fas fa-pen"></i>
-                            <span class="tooltip">Editar</span>
-                        </button>
-                        <button id='${naoConformidade.id}' class="btn confirm-btn">
-                            <i class="fas fa-check"></i>
-                            <span class="tooltip">Confirmar</span>
-                        </button>
-                        <button id='${naoConformidade.id}' class="btn cancel-btn">
-                            <i class="fas fa-times"></i>
-                            <span class="tooltip">Cancelar</span>
-                        </button>
-                        <button id='${naoConformidade.id}' class="btn delete-btn">
-                            <i class="fas fa-trash"></i>
-                            <span class="tooltip">Apagar</span>
-                        </button>
-                    </td>
-                `;
-
-                const perfil = window.localStorage.getItem('perfil')
-
-                if (perfil === 'ADMIN' || perfil === 'DEPARTAMENTO_CHEFE'){
-                    tr.querySelector('.edit-btn').addEventListener('click', () => {
-                        window.location.href = `/Perfis/Gestor - OK &/Componentes/Não Conformidades/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
-                    });
-                }
-                else if (perfil === 'CONTROLE_QUALIDADE') {
-                    tr.querySelector('.edit-btn').addEventListener('click', () => {
-                        window.location.href = `/Perfis/Controlador - OK/Componentes/Não Conformidades/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
-                    });
-                }
-                else{
-                    tr.querySelector('.edit-btn').addEventListener('click', () => {
-                        window.location.href = `/Perfis/Usuario - OK/Componentes/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
-                    });
-                }  
-
-                tr.querySelector('.delete-btn').addEventListener('click', () => {
-                    tr.remove()
-                    naoConformidades = naoConformidades.filter(item => item.id !== naoConformidade.id)
-                    atualizarNaoConformidades(naoConformidades)
-                });
-
-                bodyListaNaoConformidades.appendChild(tr);
-            });
-        }
+        let naoConformidades = obterNaoConformidades();
+        montarTBodyNaoConformidade(naoConformidades)
+       
     } catch (error) {
         console.error("Erro ao inicializar a página:", error);
     }
 });
+
+function montarTBodyNaoConformidade(naoConformidades){
+    if (naoConformidades) {
+        const bodyListaNaoConformidades = document.getElementsByClassName("ListaDeNaoConformidades")[0];
+
+        naoConformidades.forEach(naoConformidade => {
+            const tr = document.createElement('tr');
+            const departamento = obterDepartamentoPorId(naoConformidade.departamentoId);
+            const statusNaoConformidade = obterStatusNaoConformidadesPorId(naoConformidade.statusId)
+
+            tr.innerHTML = `
+                <td>${naoConformidade.usuarioNome}</td>
+                <td>${new Date(naoConformidade.dataAbertura).toLocaleDateString("pt-BR")}</td>
+                <td>${statusNaoConformidade.nome}</td>
+                <td>${departamento ? departamento.sigla : "Desconhecido"}</td>
+                <td class="botoes-acao">
+                    <button id='${naoConformidade.id}' class="btn edit-btn">
+                        <i class="fas fa-pen"></i>
+                        <span class="tooltip">Editar</span>
+                    </button>
+                    <button id='${naoConformidade.id}' class="btn confirm-btn">
+                        <i class="fas fa-check"></i>
+                        <span class="tooltip">Confirmar</span>
+                    </button>
+                    <button id='${naoConformidade.id}' class="btn cancel-btn">
+                        <i class="fas fa-times"></i>
+                        <span class="tooltip">Cancelar</span>
+                    </button>
+                    <button id='${naoConformidade.id}' class="btn delete-btn">
+                        <i class="fas fa-trash"></i>
+                        <span class="tooltip">Apagar</span>
+                    </button>
+                </td>
+            `;
+
+            const perfil = window.localStorage.getItem('perfil')
+
+            if (perfil === 'ADMIN' || perfil === 'DEPARTAMENTO_CHEFE'){
+                tr.querySelector('.edit-btn').addEventListener('click', () => {
+                    window.location.href = `/Perfis/Gestor - OK &/Componentes/Não Conformidades/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
+                });
+            }
+            else if (perfil === 'CONTROLE_QUALIDADE') {
+                tr.querySelector('.edit-btn').addEventListener('click', () => {
+                    window.location.href = `/Perfis/Controlador - OK/Componentes/Não Conformidades/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
+                });
+            }
+            else{
+                tr.querySelector('.edit-btn').addEventListener('click', () => {
+                    window.location.href = `/Perfis/Usuario - OK/Componentes/Editar Não Conformidade/Editar.html?id=${naoConformidade.id}`;
+                });
+            }  
+
+            tr.querySelector('.delete-btn').addEventListener('click', () => {
+                tr.remove()
+                naoConformidades = naoConformidades.filter(item => item.id !== naoConformidade.id)
+                atualizarNaoConformidades(naoConformidades)
+            });
+            
+            bodyListaNaoConformidades.appendChild(tr);
+        });
+    }
+}
+
+function limparTBodyTabela(){
+    const bodyListaNaoConformidades = document.getElementsByClassName("ListaDeNaoConformidades")[0];
+    bodyListaNaoConformidades.innerHTML = ''
+}
